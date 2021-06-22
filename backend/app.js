@@ -9,11 +9,11 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 // const { PORT = 3000 } = process.env;
 
 const app = express();
-app.use(function(req, res, next){
+app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://api.domainname.kostya2120.nomoredomains.club');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  net();
+  next();
 });
 
 app.use(bodyParser.json());
