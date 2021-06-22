@@ -10,7 +10,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://api.domainname.kostya2120.nomoredomains.club');
+  res.header('Access-Control-Allow-Origin', 'http://domainname.kostya2120.nomoredomains.club');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
