@@ -48,7 +48,7 @@ class AuthApi{
 }
 
 const authApi = new AuthApi({
-    baseUrl: 'http://domainname.kostya2120.nomoredomains.club',
+    baseUrl: 'http://api.domainname.kostya2120.nomoredomains.club',
 });
 
 export default authApi;
