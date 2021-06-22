@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.post('/signin', login);
-app.post('/signup', createUser);
+app.use('/signin', login);
+app.use('/signup', createUser);
 
 // app.use(auth);
 
