@@ -1,24 +1,25 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const { NotFoundError } = require('./components/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('cors');
 
 // const { PORT = 3000 } = process.env;
 
 const app = express();
 
-app.use(cors({origin: 'http://domainname.kostya2120.nomoredomains.club', credentials: true}));
+app.use(cors({ origin: 'http://domainname.kostya2120.nomoredomains.club', credentials: true }));
 
-/*app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://domainname.kostya2120.nomoredomains.club');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   next();
-});*/
+}); */
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

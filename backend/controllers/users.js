@@ -7,6 +7,8 @@ const { NotValidData } = require('../components/NotValidData');
 const { Unauthorized } = require('../components/Unauthorized');
 const { Conflict } = require('../components/Conflict');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((user) => res.send({ data: user }))
@@ -115,7 +117,7 @@ module.exports.login = (req, res, next) => {
           if (!matched) {
             throw new Unauthorized('Неправильные почта или пароль');
           }
-          const token = jwt.sign({ _id: user._id }, 'Enigma', { expiresIn: '7d' });
+          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'Enigma', { expiresIn: '7d' });
           res.status(200).send({ token });
           return token;
         });
