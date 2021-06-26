@@ -8,14 +8,14 @@ module.exports.auth = (req, res, next) => {
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
     res.send({ authorization });
-    throw new Unauthorized('Необходима авторизация1');
+    throw new Unauthorized('Необходима авторизация');
   }
   const token = authorization.replace('Bearer ', '');
   let payload;
   try {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'Enigma');
   } catch (err) {
-    throw new Unauthorized('Необходима авторизация2');
+    throw new Unauthorized('Необходима авторизация');
   }
   req.user = payload
 

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const linkRegex = /(https?:\/\/)(w{3}\.)?(((\d{1,3}\.){3}\d{1,3})|((\w-?)+\.(ru|com)))(:\d{2,5})?((\/.+)+)?\/?#?/;
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -9,7 +11,6 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 8,
     select: false,
   },
   name: {
@@ -28,6 +29,12 @@ const userSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
+    validate: {
+      validator(v) {
+        return linkRegex.test(v);
+      },
+      message: 'Неккоректная ссылка',
+    },
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
     required: false,
   },

@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const { celebrate } = require('celebrate');
+const Joi = require('joi-oid');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const { NotFoundError } = require('./components/NotFoundError');
@@ -13,13 +15,6 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 
 app.use(cors({ origin: 'http://domainname.kostya2120.nomoredomains.club', credentials: true }));
-
-/* app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://domainname.kostya2120.nomoredomains.club');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-  next();
-}); */
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,10 +27,19 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use('/signin', login);
-app.use('/signup', createUser);
+app.use('/signin', celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().require().email(),
+    password: Joi.string().require().min(8),
+  }).unknown(true),
+}), login);
 
-// app.use(auth);
+app.use('/signup', celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().require().email(),
+    password: Joi.string().require().min(8),
+  }).unknown(true),
+}), createUser);
 
 app.use('/cards', auth, require('./routes/cards'));
 
@@ -46,7 +50,6 @@ app.use(errorLogger);
 app.use('*', (req, res, next) => {
   throw new NotFoundError('Страница не найдена')
     .catch((err) => next(err));
-  // res.status(404).send({ message: 'Страница не найдена' });
 });
 
 app.use((err, req, res, next) => {
