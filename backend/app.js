@@ -27,14 +27,14 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use('api/signin', celebrate({
+app.use('/api/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().require().email(),
     password: Joi.string().require().min(8),
   }).unknown(true),
 }), login);
 
-app.use('/signup', celebrate({
+app.use('/api/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().require().email(),
     password: Joi.string().require().min(8),
