@@ -3,9 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { celebrate } = require('celebrate');
-const Joi = require('joi-oid');
-const { login, createUser } = require('./controllers/users');
+// const { celebrate } = require('celebrate');
+// const Joi = require('joi-oid');
+// const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const { NotFoundError } = require('./components/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -27,19 +27,9 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use('/api/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().require().email(),
-    password: Joi.string().require().min(8),
-  }).unknown(true),
-}), login);
+app.use('/api/signin', require('./routes/sign'));
 
-app.use('/api/signup', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().require().email(),
-    password: Joi.string().require().min(8),
-  }).unknown(true),
-}), createUser);
+app.use('/api/signup', require('./routes/sign'));
 
 app.use('/cards', auth, require('./routes/cards'));
 
