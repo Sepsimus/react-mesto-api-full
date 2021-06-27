@@ -11,7 +11,7 @@ class AuthApi{
     }
 
     registration(postInquiry){
-        return fetch(`${this._baseUrl}/api/signup`, {
+        return fetch(`${this._baseUrl}/signup`, {
                 method: 'POST',
                 credentials: 'include',
                 headers:{
@@ -24,7 +24,7 @@ class AuthApi{
     }
 
     authorization(postInquiry){
-        return fetch(`${this._baseUrl}/api/signin`, {
+        return fetch(`${this._baseUrl}/signin`, {
                 method: 'POST',
                 credentials: 'include',
                 headers:{
@@ -51,7 +51,7 @@ class AuthApi{
 }
 
 const authApi = new AuthApi({
-    baseUrl: 'http://domainname.kostya2120.nomoredomains.club',
+    baseUrl: 'http://domainname.kostya2120.nomoredomains.club/api',
 });
 
 export default authApi;

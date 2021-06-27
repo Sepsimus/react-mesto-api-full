@@ -21,20 +21,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.get('/api/crash-test', () => {
+app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
 
-app.use('/api/signin', celebrate({
+app.use('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().require().email(),
     password: Joi.string().require().min(8),
   }).unknown(true),
 }), login);
 
-app.use('/api/signup', celebrate({
+app.use('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().require().email(),
     password: Joi.string().require().min(8),
