@@ -10,6 +10,10 @@ const { auth } = require('./middlewares/auth');
 const { NotFoundError } = require('./components/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+// Я переписал настройки nginx для того чтобы бекэнд был на поддомене,
+// но у меня совершенно закончились идеи как настроить CORS,
+// прошу вашей помощи в данном вопросе
+
 // const { PORT = 3000 } = process.env;
 
 const app = express();
