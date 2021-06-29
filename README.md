@@ -6,5 +6,3 @@
 http://domainname.kostya2120.nomoredomains.club/sign-up
 http://api.domainname.kostya2120.nomoredomains.club
 http://217.28.231.250/sign-up
-
-Я переписал настройки nginx для того чтобы бекэнд был на поддомене, но у меня совершенно закончились идеи как настроить CORS, прошу вашей помощи в данном вопросе
