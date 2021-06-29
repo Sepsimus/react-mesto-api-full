@@ -14,27 +14,32 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
-app.use(cors({ origin: '*', credentials: true }));
+const corsOption = {
+  origin: '*',
+  credentials: true,
+};
+
+app.use(cors(corsOption));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.get('/crash-test', () => {
+app.get('/crash-test', cors(corsOption), () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
 
-app.use('/signin', celebrate({
+app.use('/signin', cors(corsOption), celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }).unknown(true),
 }), login);
 
-app.use('/signup', celebrate({
+app.use('/signup', cors(corsOption), celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
     about: Joi.string().required().min(2).max(30),
@@ -44,9 +49,9 @@ app.use('/signup', celebrate({
   }).unknown(true),
 }), createUser);
 
-app.use('/cards', auth, require('./routes/cards'));
+app.use('/cards', cors(corsOption), auth, require('./routes/cards'));
 
-app.use('/users', auth, require('./routes/users'));
+app.use('/users', cors(corsOption), auth, require('./routes/users'));
 
 app.use(errorLogger);
 
