@@ -17,10 +17,10 @@ const app = express();
 app.use(cors({
   origin: '*',
   credentials: true,
+  headers: 'Origin, X-Requested-With, Content-Type, Accept',
   methods: 'GET,POST,PATCH,DELETE,OPTIONS',
 }));
 app.options('*', cors());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
