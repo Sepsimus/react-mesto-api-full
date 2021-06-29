@@ -14,32 +14,30 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
-const corsOption = {
-  origin: '*',
-  credentials: true,
-};
+// app.use(cors({ origin: '*', credentials: true }));
 
-app.use(cors(corsOption));
+app.use(cors());
+app.options('http://domainname.kostya2120.nomoredomains.club', cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-app.get('/crash-test', cors(corsOption), () => {
+app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
 
-app.use('/signin', cors(corsOption), celebrate({
+app.use('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }).unknown(true),
 }), login);
 
-app.use('/signup', cors(corsOption), celebrate({
+app.use('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
     about: Joi.string().required().min(2).max(30),
@@ -49,9 +47,9 @@ app.use('/signup', cors(corsOption), celebrate({
   }).unknown(true),
 }), createUser);
 
-app.use('/cards', cors(corsOption), auth, require('./routes/cards'));
+app.use('/cards', auth, require('./routes/cards'));
 
-app.use('/users', cors(corsOption), auth, require('./routes/users'));
+app.use('/users', auth, require('./routes/users'));
 
 app.use(errorLogger);
 
