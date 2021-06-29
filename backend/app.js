@@ -14,10 +14,12 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
-// app.use(cors({ origin: '*', credentials: true }));
-
-app.use(cors());
-app.options('http://domainname.kostya2120.nomoredomains.club', cors());
+app.use(cors({
+  origin: '*',
+  credentials: true,
+  methods: 'GET,POST,PATCH,DELETE,OPTIONS',
+}));
+app.options('*', cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
