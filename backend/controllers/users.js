@@ -108,8 +108,8 @@ module.exports.updateAvatarUser = (req, res, next) => {
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
   User.findOne({ email }).select('+password')
-    .then((obj) => {
-      res.send(obj);
+    .then((headerName) => {
+      req.get(headerName);
     })
     .then((user) => {
       if (!user) {
