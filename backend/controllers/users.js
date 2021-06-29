@@ -108,6 +108,9 @@ module.exports.updateAvatarUser = (req, res, next) => {
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
   User.findOne({ email }).select('+password')
+    .then((obj) => {
+      res.send(obj);
+    })
     .then((user) => {
       if (!user) {
         throw new Unauthorized('Неправильные почта или пароль');
