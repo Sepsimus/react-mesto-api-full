@@ -118,7 +118,6 @@ module.exports.login = (req, res, next) => {
             throw new Unauthorized('Неправильные почта или пароль');
           }
           const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'Enigma', { expiresIn: '7d' });
-          res.send(JSON.stringify(req.headers));
           res.status(200).send({ token });
           return token;
         });
