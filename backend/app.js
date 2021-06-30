@@ -15,7 +15,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://domainname.kostya2120.nomoredomains.club',
   credentials: true,
   headers: 'Origin, X-Requested-With, Content-Type, Accept',
   methods: 'GET,POST,PATCH,DELETE,OPTIONS',
