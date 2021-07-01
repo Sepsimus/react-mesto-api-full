@@ -50,7 +50,7 @@ app.use('/signup', celebrate({
 
 app.use('/cards', auth, require('./routes/cards'));
 
-app.use('/users', auth, require('./routes/users'));
+app.use('/users', /* auth, */ require('./routes/users'));
 
 app.use(errorLogger);
 
