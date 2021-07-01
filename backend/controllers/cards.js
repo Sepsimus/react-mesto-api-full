@@ -6,7 +6,7 @@ const { MethodNotAllowed } = require('../components/MethodNotAllowed');
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate('user')
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send({ card }))
     .catch(next);
 };
 
