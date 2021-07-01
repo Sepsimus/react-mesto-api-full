@@ -63,6 +63,8 @@ function App() {
         console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }, []);
+
+  console.log(currentUser);
   
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
