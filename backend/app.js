@@ -10,17 +10,14 @@ const { auth } = require('./middlewares/auth');
 const { NotFoundError } = require('./components/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-// const { PORT = 3000 } = process.env;
-
 const app = express();
 
 app.use(cors({
   origin: 'http://domainname.kostya2120.nomoredomains.club',
   credentials: true,
-  headers: 'Origin, X-Requested-With, Content-Type, Accept',
+  headers: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   methods: 'GET,POST,PATCH,DELETE,OPTIONS',
 }));
-// app.options('http://localhost:3001', cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

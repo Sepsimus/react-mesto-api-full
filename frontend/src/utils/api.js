@@ -14,9 +14,9 @@ class Api {
     userServerInfo(){
        return fetch(`${this._baseUrl}/users/me`, {
         credentials: 'include',
-            headers: {
+            /*headers: {
                 authorization: this._authorization
-            }
+            }*/
         })
         .then(this._checkResponse);
     }
@@ -24,9 +24,9 @@ class Api {
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
             credentials: 'include',
-            headers: {
+            /*headers: {
                 authorization: this._authorization
-            }
+            }*/
         })
         .then(this._checkResponse);
     }
@@ -36,7 +36,7 @@ class Api {
             method: 'PATCH',
             credentials: 'include',
             headers: {
-                authorization: this._authorization,
+               // authorization: this._authorization,
                 'Content-Type': 'application/json'
             },
             body: patchInquiry
@@ -49,7 +49,7 @@ class Api {
             method: 'POST',
             credentials: 'include',
             headers: {
-                authorization: this._authorization,
+                // authorization: this._authorization,
                 'Content-Type': 'application/json'
             },
             body: postInquiry
@@ -62,7 +62,7 @@ class Api {
             method: 'DELETE',
             credentials: 'include',
             headers: {
-                authorization: this._authorization,
+               // authorization: this._authorization,
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
@@ -75,7 +75,7 @@ class Api {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {
-                    authorization: this._authorization,
+                   // authorization: this._authorization,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             })
@@ -85,7 +85,7 @@ class Api {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {
-                    authorization: this._authorization,
+                   // authorization: this._authorization,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             })
@@ -98,7 +98,7 @@ class Api {
             method: 'PATCH',
             credentials: 'include',
             headers: {
-                authorization: this._authorization,
+               // authorization: this._authorization,
                 'Content-Type': 'application/json'
             },
             body: patchInquiry
@@ -109,8 +109,8 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
-    authorization: '2aa5c816-8b07-4613-97bf-d801be8b799e',
+    baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club',
+    //authorization: '2aa5c816-8b07-4613-97bf-d801be8b799e',
   });
 
   export default api;
