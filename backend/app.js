@@ -6,7 +6,7 @@ const cors = require('cors');
 const { celebrate } = require('celebrate');
 const Joi = require('joi-oid');
 const { login, createUser } = require('./controllers/users');
-const { auth } = require('./middlewares/auth');
+// const { auth } = require('./middlewares/auth');
 const { NotFoundError } = require('./components/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -48,9 +48,9 @@ app.use('/signup', celebrate({
   }).unknown(true),
 }), createUser);
 
-app.use('/cards', auth, require('./routes/cards'));
+app.use('/cards', require('./routes/cards'));
 
-app.use('/users', /* auth, */ require('./routes/users'));
+app.use('/users', require('./routes/users'));
 
 app.use(errorLogger);
 
