@@ -63,14 +63,16 @@ function App() {
         console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }, []);
-
-  console.log(currentUser);
   
+  console.log(currentUser);
+
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
+    console.log(jwt);
     if(jwt){
       authApi.tokenCheck(jwt)
       .then((tokenData) => {
+        console.log(tokenData);
         if(tokenData){
           setUserEmail(tokenData.data.email);
           handleLogin();

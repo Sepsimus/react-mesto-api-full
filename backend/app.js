@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { celebrate } = require('celebrate');
 const Joi = require('joi-oid');
+// const cookieParser = require('cookie-parser');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const { NotFoundError } = require('./components/NotFoundError');
@@ -12,9 +13,11 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
+// app.use(cookieParser());
+
 app.use(cors({
   // origin: 'http://domainname.kostya2120.nomoredomains.club',
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3001',
   credentials: true,
   headers: 'Origin, X-Requested-With, Content-Type, Accept, authorization',
   methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
