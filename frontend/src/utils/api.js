@@ -13,9 +13,11 @@ class Api {
 
     userServerInfo(){
        return fetch(`${this._baseUrl}/users/me`, {
+        method: 'GET',
         credentials: 'include',
             headers: {
-                'authorization': `Bearer ${this._authorization}`
+                authorization: `Bearer ${this._authorization}`,
+                "Content-Type": "application/json",
             }
         })
         .then(this._checkResponse);
@@ -23,9 +25,11 @@ class Api {
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
+            method: 'GET',
             credentials: 'include',
             headers: {
-                'authorization': `Bearer ${this._authorization}`
+                authorization: `Bearer ${this._authorization}`,
+                "Content-Type": "application/json",
             }
         })
         .then(this._checkResponse);
@@ -36,7 +40,7 @@ class Api {
             method: 'PATCH',
             credentials: 'include',
             headers: {
-                'authorization': `Bearer ${this._authorization}`,
+                authorization: `Bearer ${this._authorization}`,
                 'Content-Type': 'application/json'
             },
             body: patchInquiry
@@ -49,7 +53,7 @@ class Api {
             method: 'POST',
             credentials: 'include',
             headers: {
-                'authorization': `Bearer ${this._authorization}`,
+                authorization: `Bearer ${this._authorization}`,
                 'Content-Type': 'application/json'
             },
             body: postInquiry
@@ -62,7 +66,7 @@ class Api {
             method: 'DELETE',
             credentials: 'include',
             headers: {
-                'authorization': `Bearer ${this._authorization}`,
+                authorization: `Bearer ${this._authorization}`,
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
@@ -75,7 +79,7 @@ class Api {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {
-                    'authorization': `Bearer ${this._authorization}`,
+                    authorization: `Bearer ${this._authorization}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             })
@@ -85,7 +89,7 @@ class Api {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {
-                    'authorization': `Bearer ${this._authorization}`,
+                    authorization: `Bearer ${this._authorization}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             })
@@ -98,7 +102,7 @@ class Api {
             method: 'PATCH',
             credentials: 'include',
             headers: {
-                'authorization': `Bearer ${this._authorization}`,
+                authorization: `Bearer ${this._authorization}`,
                 'Content-Type': 'application/json'
             },
             body: patchInquiry
@@ -110,7 +114,7 @@ class Api {
 
 const api = new Api({
     // baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club',
-    // authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJlMDRjZjNlNTcxMzUwYzhmZjAxMGMiLCJpYXQiOjE2MjUyMzY2NTYsImV4cCI6MTYyNTg0MTQ1Nn0.UzNylRiPi9Ki-pZ4lNOGI5KKkEwivCOKY4eAO5yQhyc',
+    authorization: localStorage.getItem('jwt'),
     baseUrl: 'http://localhost:3000',
   });
 
