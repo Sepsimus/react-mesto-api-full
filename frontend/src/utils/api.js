@@ -16,8 +16,6 @@ class Api {
         method: 'GET',
         credentials: 'include',
             headers: {
-                "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
-                "Access-Control-Allow-Credentials": true,
                 authorization: `Bearer ${this._authorization}`,
                 "Content-Type": "application/json",
             }
@@ -30,8 +28,6 @@ class Api {
             method: 'GET',
             credentials: 'include',
             headers: {
-                "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
-                "Access-Control-Allow-Credentials": true,
                 authorization: `Bearer ${this._authorization}`,
                 "Content-Type": "application/json",
             }
@@ -44,8 +40,6 @@ class Api {
             method: 'PATCH',
             credentials: 'include',
             headers: {
-                "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
-                "Access-Control-Allow-Credentials": true,
                 authorization: `Bearer ${this._authorization}`,
                 'Content-Type': 'application/json'
             },
@@ -59,8 +53,6 @@ class Api {
             method: 'POST',
             credentials: 'include',
             headers: {
-                "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
-                "Access-Control-Allow-Credentials": true,
                 authorization: `Bearer ${this._authorization}`,
                 'Content-Type': 'application/json'
             },
@@ -74,8 +66,6 @@ class Api {
             method: 'DELETE',
             credentials: 'include',
             headers: {
-                "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
-                "Access-Control-Allow-Credentials": true,
                 authorization: `Bearer ${this._authorization}`,
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
@@ -89,8 +79,6 @@ class Api {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {
-                    "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
-                    "Access-Control-Allow-Credentials": true,
                     authorization: `Bearer ${this._authorization}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -101,8 +89,6 @@ class Api {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
-                    "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
-                    "Access-Control-Allow-Credentials": true,
                     authorization: `Bearer ${this._authorization}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -116,8 +102,6 @@ class Api {
             method: 'PATCH',
             credentials: 'include',
             headers: {
-                "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
-                "Access-Control-Allow-Credentials": true,
                 authorization: `Bearer ${this._authorization}`,
                 'Content-Type': 'application/json'
             },
