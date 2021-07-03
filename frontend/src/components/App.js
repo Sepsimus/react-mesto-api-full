@@ -20,8 +20,9 @@ function App() {
 
   let api = new Api({
     authorization: localStorage.getItem('jwt'),
-    baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club'
+    // baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club'
     // baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club',
   });
 
   const history = useHistory(); 
