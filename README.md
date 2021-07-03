@@ -3,6 +3,8 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-http://domainname.kostya2120.nomoredomains.club/sign-up
-http://api.domainname.kostya2120.nomoredomains.club
-http://217.28.231.250/sign-up
+https://domainname.kostya2120.nomoredomains.club/sign-up
+
+https://api.domainname.kostya2120.nomoredomains.club
+
+https://217.28.231.250/sign-up
