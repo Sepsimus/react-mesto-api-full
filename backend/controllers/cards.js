@@ -16,7 +16,7 @@ module.exports.createCard = (req, res, next) => {
     link: req.body.link,
     owner: req.user._id,
   })
-    .then(() => res.status(200).send({ message: 'Карточка создана' }))
+    .then((card) => res.send(card))
     .catch((err) => {
       res.send(err);
       if (err.name === 'ValidationError') {

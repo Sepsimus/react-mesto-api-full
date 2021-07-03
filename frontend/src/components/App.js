@@ -163,6 +163,7 @@ function App() {
   function registerNewUser(registerInfo){
     authApi.registration(JSON.stringify(registerInfo))
     .then((registerData) => {
+      console.log(registerData);
       setSuccessfulyRegistered(true);
       setIsRegisterPopupOpen(true);
     })
