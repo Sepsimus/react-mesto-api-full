@@ -15,6 +15,8 @@ class AuthApi{
                 method: 'POST',
                 credentials: 'include',
                 headers:{
+                    "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
+                    "Access-Control-Allow-Credentials": true,
                     "Content-Type": "application/json"
                 },
                 body:postInquiry,
@@ -28,6 +30,8 @@ class AuthApi{
                 method: 'POST',
                 credentials: 'include',
                 headers:{
+                    "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
+                    "Access-Control-Allow-Credentials": true,
                     "Content-Type": "application/json"
                 },
                 body:postInquiry,
@@ -41,6 +45,8 @@ class AuthApi{
             method: 'GET',
             credentials: 'include',
             headers:{
+                "Access-Control-Allow-Origin": 'https://api.domainname.kostya2120.nomoredomains.club',
+                "Access-Control-Allow-Credentials": true,
                 "Content-Type": "application/json",
                 "Authorization" : `Bearer ${token}`
             }
