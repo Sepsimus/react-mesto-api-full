@@ -5,7 +5,7 @@ import Header from './Header';
 import ImagePopup from './ImagePopup';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';
-import api from '../utils/api';
+import Api from '../utils/api';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
@@ -17,6 +17,11 @@ import InfoTooltip from './InfoTooltip';
 import authApi from '../utils/authApi';
 
 function App() {
+
+  let api = new Api({
+    authorization: localStorage.getItem('jwt'),
+    baseUrl: 'http://localhost:3000',
+  });
 
   const history = useHistory(); 
 
@@ -30,7 +35,7 @@ function App() {
   const [userEmail, setUserEmail] = React.useState('');
 
   function handleCardLike(card){
-    const isLiked = card.likes.some(user => user._id === currentUser._id);
+    const isLiked = card.likes.some(id => id === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked)
     .then((newCard) => {
       setCards((state) => 
@@ -57,24 +62,23 @@ function App() {
     Promise.all([api.userServerInfo(), api.getInitialCards()])
     .then(([userData, cardsData]) => {
         setCurrentUser(userData);
+        setUserEmail(userData.email);
         setCards(cardsData);
     })
     .catch((err) => {
         console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
-  }, []);
+  }, [localStorage.getItem('jwt')]);
   
   console.log(currentUser);
+  console.log(cards);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
-    console.log(jwt);
     if(jwt){
       authApi.tokenCheck(jwt)
       .then((tokenData) => {
-        console.log(tokenData);
         if(tokenData){
-          setUserEmail(tokenData.data.email);
           handleLogin();
           history.push('/main');
         }
@@ -170,10 +174,11 @@ function App() {
   }
 
   function authorizationUser(authorizationInfo){
+    console.log(authorizationInfo)
     authApi.authorization(JSON.stringify(authorizationInfo))
     .then((authorizationData) => {
       localStorage.setItem('jwt', authorizationData.token);
-      setUserEmail(authorizationInfo.email);
+      // setUserEmail(authorizationInfo.email);
       handleLogin();
       history.push('/main');
     })

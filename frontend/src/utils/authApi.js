@@ -42,7 +42,7 @@ class AuthApi{
             credentials: 'include',
             headers:{
                 "Content-Type": "application/json",
-                "authorization" : `Bearer ${token}`
+                "Authorization" : `Bearer ${token}`
             }
         }
     )
@@ -51,7 +51,6 @@ class AuthApi{
 }
 
 const authApi = new AuthApi({
-    // baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club',
     baseUrl: 'http://localhost:3000',
 });
 

@@ -23,6 +23,16 @@ app.use(cors({
   methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
 }));
 
+app.use((req, res, next) => {
+  res.setHeader('Cash-Control', 'no-store');
+  next();
+});
+
+/* app.use((req, res, next) => {
+  res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+  next();
+}); */
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -50,6 +60,13 @@ app.use('/signup', celebrate({
     password: Joi.string().required().min(8),
   }).unknown(true),
 }), createUser);
+
+/* app.use((req, res, next) => {
+  req.user = {
+    _id: '60be04cf3e571350c8ff010c',
+  };
+  next();
+}); */
 
 app.use('/cards', auth, require('./routes/cards'));
 

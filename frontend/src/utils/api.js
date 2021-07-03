@@ -75,7 +75,7 @@ class Api {
 
     changeLikeCardStatus(inquiry, isLiked){
         if(isLiked){
-            return fetch(`${this._baseUrl}/cards/likes/${inquiry}`, {
+            return fetch(`${this._baseUrl}/cards/${inquiry}/likes`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {
@@ -85,8 +85,8 @@ class Api {
             })
             .then(this._checkResponse)
         }else{  
-            return fetch(`${this._baseUrl}/cards/likes/${inquiry}`, {
-                method: 'PUT',
+            return fetch(`${this._baseUrl}/cards/${inquiry}/likes`, {
+                method: 'POST',
                 credentials: 'include',
                 headers: {
                     authorization: `Bearer ${this._authorization}`,
@@ -112,10 +112,4 @@ class Api {
 
 }
 
-const api = new Api({
-    // baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club',
-    authorization: localStorage.getItem('jwt'),
-    baseUrl: 'http://localhost:3000',
-  });
-
-  export default api;
+  export default Api;

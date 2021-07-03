@@ -6,13 +6,11 @@ const { MethodNotAllowed } = require('../components/MethodNotAllowed');
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate('user')
-    .then((card) => (card))
-    .catch(next);
+    .then((card) => res.send(card))
+    .catch((err) => next(err));
 };
 
 module.exports.createCard = (req, res, next) => {
-  // const { ownerId } = req.user._id;
-  // const { name, link } = req.body;
   Card.create({
     name: req.body.name,
     link: req.body.link,
@@ -20,6 +18,7 @@ module.exports.createCard = (req, res, next) => {
   })
     .then(() => res.status(200).send({ message: 'Карточка создана' }))
     .catch((err) => {
+      res.send(err);
       if (err.name === 'ValidationError') {
         throw new NotValidData('Переданы неккоретные данные');
       }
@@ -29,9 +28,9 @@ module.exports.createCard = (req, res, next) => {
 };
 
 module.exports.deleteCard = (req, res, next) => {
-  Card.findByIdAndRemove(req.params.id)
+  Card.findByIdAndRemove(req.params.cardId)
     .then((card) => {
-      if (req.user._id !== card.owner) {
+      if (req.user._id === card.owner) {
         throw new MethodNotAllowed('Метод не дозволен');
       }
       if (!card) {
@@ -59,7 +58,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
       } else {
-        res.send({ data: card });
+        res.send(card);
       }
     })
     .catch((err) => {
@@ -81,7 +80,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
       } else {
-        res.send({ data: card });
+        res.send(card);
       }
     })
     .catch((err) => {

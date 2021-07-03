@@ -4,10 +4,10 @@ export default function Card(props) {
 
     const userInfo = React.useContext(CurrentUserContext);
 
-    const isOwn = props.card.owner._id === userInfo._id;
+    const isOwn = props.card.owner === userInfo._id;
     const cardDeleteButtonClassName = (`element__delete-button ${isOwn ? 'element__delete-button_visible' : 'element__delete-button_hidden'}`)
 
-    const isLiked = props.card.likes.some(user => user._id === userInfo._id);
+    const isLiked = props.card.likes.some(id => id === userInfo._id);
     const cardLikeButtonClassName = (`element__like-button ${isLiked ? 'element__like-button_active' : 'element__like-button_inactive'}`);
     
     function handleClick(){
@@ -26,7 +26,6 @@ export default function Card(props) {
         <div className="element">
         <button className={cardDeleteButtonClassName} type="button"
         onClick={handleDeleteClick}
-        //onClick={props.onDeleteCardClick}
         />
         <img className="element__image" src={props.card.link} alt={props.card.name} 
         onClick={handleClick}/>
