@@ -131,8 +131,6 @@ module.exports.getMe = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       } else {
-        res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         res.send(user);
       }
     })
