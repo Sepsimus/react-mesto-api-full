@@ -17,18 +17,18 @@ const app = express();
 
 app.use(cors({
   origin: 'http://domainname.kostya2120.nomoredomains.club',
+  // origin: 'http://localhost:3001',
   credentials: true,
   headers: 'Origin, X-Requested-With, Content-Type, Accept, authorization',
-  methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
+  methods: 'GET,POST,PATCH,DELETE,OPTIONS',
 }));
 
-/*
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   res.setHeader('Cash-Control', 'no-store');
   next();
 });
 
- app.use((req, res, next) => {
+app.use((req, res, next) => {
   res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
   next();
 }); */
