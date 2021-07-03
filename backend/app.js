@@ -23,6 +23,12 @@ app.use(cors({
   methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
 }));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://domainname.kostya2120.nomoredomains.club');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 /* app.use((req, res, next) => {
   res.setHeader('Cash-Control', 'no-store');
   next();
