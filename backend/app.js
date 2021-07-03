@@ -22,12 +22,13 @@ app.use(cors({
   methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
 }));
 
+/*
 app.use((req, res, next) => {
   res.setHeader('Cash-Control', 'no-store');
   next();
 });
 
-/* app.use((req, res, next) => {
+ app.use((req, res, next) => {
   res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
   next();
 }); */
