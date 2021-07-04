@@ -22,7 +22,7 @@ function App() {
     authorization: localStorage.getItem('jwt'),
     // baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club'
     // baseUrl: 'http://localhost:3000',
-    baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club',
+    baseUrl: 'https://domainname.kostya2120.nomoredomains.club/app',
   });
 
   const history = useHistory(); 
