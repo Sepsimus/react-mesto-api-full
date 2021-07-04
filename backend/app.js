@@ -18,12 +18,12 @@ const app = express();
 app.use(cors({
   // origin: 'https://domainname.kostya2120.nomoredomains.club',
   // origin: 'http://localhost:3001',
-  origin: 'https://domainname.kostya2120.nomoredomains.club',
+  origin: 'https://domainname.kostya2120.nomoredomains.club/api',
   credentials: true,
   headers: 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, authorization, Authorization',
   methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
 }));
-
+/*
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://domainname.kostya2120.nomoredomains.club');
   res.setHeader('Access-Control-Request-Headers', 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, authorization, Authorization');
@@ -55,14 +55,14 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use('/signin', celebrate({
+app.use('/api/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }).unknown(true),
 }), login);
 
-app.use('/signup', celebrate({
+app.use('/api/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
