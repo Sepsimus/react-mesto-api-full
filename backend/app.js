@@ -26,6 +26,7 @@ app.use(cors({
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://domainname.kostya2120.nomoredomains.club');
+  res.setHeader('Access-Control-Request-Headers', 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   res.setHeader('Access-Control-Allow-Credentials', true);
