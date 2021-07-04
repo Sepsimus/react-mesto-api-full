@@ -55,14 +55,14 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use('/api/signin', celebrate({
+app.use('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }).unknown(true),
 }), login);
 
-app.use('/api/signup', celebrate({
+app.use('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
@@ -72,16 +72,16 @@ app.use('/api/signup', celebrate({
   }).unknown(true),
 }), createUser);
 
-/* app.use((req, res, next) => {
+app.use((req, res, next) => {
   req.user = {
     _id: '60be04cf3e571350c8ff010c',
   };
   next();
-}); */
+});
 
-app.use('/cards', auth, require('./routes/cards'));
+app.use('/cards', /*auth,*/ require('./routes/cards'));
 
-app.use('/users', auth, require('./routes/users'));
+app.use('/users', /*auth,*/ require('./routes/users'));
 
 app.use(errorLogger);
 
