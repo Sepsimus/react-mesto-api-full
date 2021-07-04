@@ -18,7 +18,7 @@ const app = express();
 app.use(cors({
   // origin: 'https://domainname.kostya2120.nomoredomains.club',
   // origin: 'http://localhost:3001',
-  origin: 'https://domainname.kostya2120.nomoredomains.club/api',
+  origin: 'https://domainname.kostya2120.nomoredomains.club',
   credentials: true,
   headers: 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, authorization, Authorization',
   methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
