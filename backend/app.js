@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { celebrate } = require('celebrate');
 const Joi = require('joi-oid');
-// const cookieParser = require('cookie-parser');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const { NotFoundError } = require('./components/NotFoundError');
@@ -13,37 +12,20 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
-// app.use(cookieParser());
-
 app.use(cors({
   // origin: 'https://domainname.kostya2120.nomoredomains.club',
-  // origin: 'http://localhost:3000',
+  // origin: 'http://localhost:3001',
   origin: 'https://domainname.kostya2120.nomoredomains.club',
   credentials: true,
-  headers: 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization',
-  methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
+  // headers: 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization',
+  // methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
 }));
 /*
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://domainname.kostya2120.nomoredomains.club');
-  res.setHeader('Access-Control-Request-Headers', 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, authorization, Authorization');
-  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, authorization, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-  next();
-});
-
-/* app.use((req, res, next) => {
-  res.setHeader('Cash-Control', 'no-store');
-  next();
-});
-
-app.use((req, res, next) => {
-  res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
-  next();
-}); */
-
+const corsOptions = {
+  origin: 'https://domainname.kostya2120.nomoredomains.club',
+  credentials: true,
+};
+*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
