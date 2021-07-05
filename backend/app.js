@@ -17,8 +17,8 @@ app.use(cors({
   // origin: 'http://localhost:3001',
   origin: 'https://domainname.kostya2120.nomoredomains.club',
   credentials: true,
-  // headers: 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization',
-  // methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
+  headers: 'Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization',
+  methods: 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
 }));
 /*
 const corsOptions = {
