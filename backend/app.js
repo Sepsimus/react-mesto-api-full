@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { celebrate } = require('celebrate');
+const { celebrate, errors } = require('celebrate');
 const Joi = require('joi-oid');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
@@ -45,22 +45,16 @@ app.use('/signup', celebrate({
   }).unknown(true),
 }), createUser);
 
-app.use((req, res, next) => {
-  req.user = {
-    _id: '60be04cf3e571350c8ff010c',
-  };
-  next();
-});
-
 app.use('/cards', auth, require('./routes/cards'));
 
 app.use('/users', auth, require('./routes/users'));
 
 app.use(errorLogger);
 
+app.use(errors());
+
 app.use('*', (req, res, next) => {
-  throw new NotFoundError('Страница не найдена')
-    .catch((err) => next(err));
+  next(new NotFoundError('Страница не найдена'));
 });
 
 app.use((err, req, res, next) => {

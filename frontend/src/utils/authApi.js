@@ -51,8 +51,6 @@ class AuthApi{
 }
 
 const authApi = new AuthApi({
-    //baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club'
-    //baseUrl: 'http://localhost:3000',
     baseUrl: 'https://api.domainname.kostya2120.nomoredomains.club',
 });
 
