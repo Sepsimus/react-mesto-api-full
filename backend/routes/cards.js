@@ -16,20 +16,20 @@ router.post('/', celebrate({
 
 router.delete('/:cardId', celebrate({
   params: Joi.object().keys({
-    id: Joi.objectId(),
-  }).unknown(true),
+    cardId: Joi.objectId(),
+  }),
 }), deleteCard);
 
 router.post('/:cardId/likes', celebrate({
   params: Joi.object().keys({
-    id: Joi.objectId(),
-  }).unknown(true),
+    cardId: Joi.objectId(),
+  }),
 }), likeCard);
 
 router.delete('/:cardId/likes', celebrate({
   params: Joi.object().keys({
-    id: Joi.objectId(),
-  }).unknown(true),
+    cardId: Joi.objectId(),
+  }),
 }), dislikeCard);
 
 module.exports = router;

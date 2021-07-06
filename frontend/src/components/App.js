@@ -69,9 +69,6 @@ function App() {
         console.log(`Ошибка:${err}. Запрос не выполнен`);
     })
   }, [localStorage.getItem('jwt')]);
-  
-  console.log(currentUser);
-  console.log(cards);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -163,7 +160,6 @@ function App() {
   function registerNewUser(registerInfo){
     authApi.registration(JSON.stringify(registerInfo))
     .then((registerData) => {
-      console.log(registerData);
       setSuccessfulyRegistered(true);
       setIsRegisterPopupOpen(true);
     })
@@ -175,11 +171,9 @@ function App() {
   }
 
   function authorizationUser(authorizationInfo){
-    console.log(authorizationInfo)
     authApi.authorization(JSON.stringify(authorizationInfo))
     .then((authorizationData) => {
       localStorage.setItem('jwt', authorizationData.token);
-      // setUserEmail(authorizationInfo.email);
       handleLogin();
       history.push('/main');
     })
