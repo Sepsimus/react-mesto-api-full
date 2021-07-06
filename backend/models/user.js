@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const linkRegex = /(https?:\/\/)(w{3}\.)?(((\d{1,3}\.){3}\d{1,3})|((\w-?)+\.(ru|com)))(:\d{2,5})?((\/.+)+)?\/?#?/;
+const linkRegex = /(https?:\/\/)(w{3}\.)?(((\d{1,3}\.){3}\d{1,3})|((\w-?)+\.(ru|com|)))(:\d{2,5})?((\/.+)+)?\/?#?/;
 
 const userSchema = new mongoose.Schema({
   email: {
