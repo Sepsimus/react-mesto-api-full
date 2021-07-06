@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
-const isEmail = require('validator');
+const { isEmail } = require('validator');
 
 const linkRegex = /(https?:\/\/)(w{3}\.)?(((\d{1,3}\.){3}\d{1,3})|((\w-?)+\.(ru|com|)))(:\d{2,5})?((\/.+)+)?\/?#?/;
 
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: true,
-    unique: true,
     validate: {
       validator(v) {
         return isEmail(v);
       },
       message: 'Неккоректный email',
     },
+    required: true,
+    unique: true,
   },
   password: {
     type: String,
