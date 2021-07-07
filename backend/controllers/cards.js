@@ -36,8 +36,8 @@ module.exports.deleteCard = (req, res, next) => {
       if (req.user._id === card.owner) {
         throw new MethodNotAllowed('Метод не дозволен');
       } else {
-        Card.findByIdAndRemove(card._id);
-        res.status(200).send({ message: 'Карточка удалена' });
+        Card.findByIdAndRemove(req.params.cardId)
+          .then(() => res.status(200).send({ message: 'Карточка удалена' }));
       }
     })
     .catch((err) => {
