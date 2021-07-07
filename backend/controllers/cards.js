@@ -28,14 +28,15 @@ module.exports.createCard = (req, res, next) => {
 };
 
 module.exports.deleteCard = (req, res, next) => {
-  Card.findByIdAndRemove(req.params.cardId)
+  Card.findById(req.params.cardId)
     .then((card) => {
-      if (req.user._id === card.owner) {
-        throw new MethodNotAllowed('Метод не дозволен');
-      }
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
+      }
+      if (req.user._id === card.owner) {
+        throw new MethodNotAllowed('Метод не дозволен');
       } else {
+        Card.findByIdAndRemove(req.params.cardId);
         res.status(200).send({ message: 'Карточка удалена' });
       }
     })
