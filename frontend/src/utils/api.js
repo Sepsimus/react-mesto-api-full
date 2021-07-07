@@ -86,7 +86,7 @@ class Api {
             .then(this._checkResponse)
         }else{  
             return fetch(`${this._baseUrl}/cards/${inquiry}/likes`, {
-                method: 'POST',
+                method: 'PUT',
                 credentials: 'include',
                 headers: {
                     authorization: `Bearer ${this._authorization}`,

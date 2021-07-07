@@ -20,7 +20,7 @@ router.delete('/:cardId', celebrate({
   }),
 }), deleteCard);
 
-router.post('/:cardId/likes', celebrate({
+router.put('/:cardId/likes', celebrate({
   params: Joi.object().keys({
     cardId: Joi.objectId(),
   }),
